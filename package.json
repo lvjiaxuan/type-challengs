@@ -1,0 +1,24 @@
+{
+  "private": false,
+  "name": "@lvjiaxuan/type-challengs",
+  "version": "0.0.1",
+  "main": "index.js",
+  "author": "lvjiaxuan <471501748@qq.com> (https://github.com/lvjiaxuan)",
+  "scripts": {
+    "lint": "eslint .",
+    "tsc": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@lvjiaxuan/eslint-plugin": "^0.0.15",
+    "@type-challenges/utils": "^0.1.1",
+    "eslint": "^8.21.0",
+    "typescript": "^4.7.4"
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "plugin:@lvjiaxuan/recommended"
+    ]
+  },
+  "license": "MIT"
+}
