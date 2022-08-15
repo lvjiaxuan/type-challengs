@@ -1,9 +1,10 @@
 {
-  "private": false,
   "name": "@lvjiaxuan/type-challengs",
   "version": "0.0.1",
-  "main": "index.js",
+  "private": false,
   "author": "lvjiaxuan <471501748@qq.com> (https://github.com/lvjiaxuan)",
+  "license": "MIT",
+  "main": "index.js",
   "scripts": {
     "lint": "eslint . --fix",
     "tsc": "tsc --noEmit",
@@ -17,14 +18,13 @@
     "lint-staged": "^13.0.3",
     "typescript": "^4.7.4"
   },
+  "lint-staged": {
+    "*.ts": ["nr lint", "nr tsc"]
+  },
   "eslintConfig": {
     "root": true,
     "extends": [
       "plugin:@lvjiaxuan/recommended"
     ]
-  },
-  "lint-staged": {
-    "*.ts": "nr lint && nr tsc"
-  },
-  "license": "MIT"
+  }
 }
