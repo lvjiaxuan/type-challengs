@@ -25,7 +25,7 @@
 
 /* _____________ 你的代码 _____________ */
 
-type First<T extends any[]> = T extends [infer F, ...unknown[]] ? F : never
+type First<T extends unknown[]> = T extends [infer F, ...unknown[]] ? F : never
 
 
 /* _____________ 测试用例 _____________ */
