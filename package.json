@@ -19,7 +19,7 @@
     "typescript": "^4.7.4"
   },
   "lint-staged": {
-    "*.ts": ["nr lint", "nr tsc"]
+    "*.ts": ["eslint --fix", "tsc --noEmit"]
   },
   "eslintConfig": {
     "root": true,
