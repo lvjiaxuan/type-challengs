@@ -23,8 +23,8 @@
 
 /* _____________ 你的代码 _____________ */
 
-type MyAwaited<T extends Promise<any> > = T extends Promise<infer R>
-  ? (R extends Promise<any> ? MyAwaited<R> : R)
+type MyAwaited<T extends Promise<unknown> > = T extends Promise<infer R>
+  ? (R extends Promise<unknown> ? MyAwaited<R> : R)
   : never
 
 
