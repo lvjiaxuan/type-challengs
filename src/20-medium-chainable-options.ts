@@ -41,19 +41,19 @@
 /* _____________ 你的代码 _____________ */
 
 // 1. 计算 `get()` 返回值
-// type Chainable<R = Record<string, unknown>> = {
+// type Chainable<R = object> = {
 //   option(key: string, value: any): any
 //   get(): R
 // }
 
 // 2. `option()` 需要靠靠递归 `Chainable` 进行串联
-// type Chainable<R = Record<string, unknown>> = {
+// type Chainable<R = object> = {
 //   option(key: string, value: any): Chainable
 //   get(): R
 // }
 
 // 3. 递归同时要缓存每一次的 `option(k, v)` 的键值
-// type Chainable<R = Record<string, unknown>> = {
+// type Chainable<R = object> = {
 //   option<K extends string, V>(key: K, value: V): Chainable<R & Record<K, V>>
 //   get(): R
 // }
