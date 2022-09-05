@@ -46,7 +46,7 @@
 //   get(): R
 // }
 
-// 2. `option()` 需要靠靠递归 `Chainable` 进行串联
+// 2. `option()` 需要靠递归 `Chainable` 进行串联
 // type Chainable<R = object> = {
 //   option(key: string, value: any): Chainable
 //   get(): R
