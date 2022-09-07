@@ -31,9 +31,6 @@ type cases = [
   Expect<Equal<TupleToUnion<[123]>, 123>>,
 ]
 
-type xxx = TupleToUnion<[123, '456', true]>
-
-
 /* _____________ 下一步 _____________ */
 /*
   > 分享你的解答：https://tsch.js.org/10/answer/zh-CN

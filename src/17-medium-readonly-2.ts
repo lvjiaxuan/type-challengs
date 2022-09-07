@@ -42,9 +42,6 @@ type MyReadonly2<T, K extends keyof T = keyof T> = { readonly [P in K]: T[P] } &
 /* _____________ 测试用例 _____________ */
 import type { Alike, Expect } from '@type-challenges/utils'
 
-type xx = MyReadonly2<Todo1>
-type xxyy = MyReadonly2<Todo1, 'title' | 'description'>
-
 type cases = [
   Expect<Alike<MyReadonly2<Todo1>, Readonly<Todo1>>>,
   Expect<Alike<MyReadonly2<Todo1, 'title' | 'description'>, Expected>>,

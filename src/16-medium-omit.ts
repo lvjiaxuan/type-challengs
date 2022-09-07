@@ -30,14 +30,12 @@
 
 
 /* _____________ 你的代码 _____________ */
-type MyExclude<T, U> = T extends U ? never : T
+// type MyExclude<T, U> = T extends U ? never : T
 type MyOmit<T, K extends keyof T> = { [P in Exclude<keyof T, K> ]: T[P] }
 
 
 /* _____________ 测试用例 _____________ */
 import type { Equal, Expect } from '@type-challenges/utils'
-
-type xxx = MyOmit<Todo, 'description'>
 
 type cases = [
   Expect<Equal<Expected1, MyOmit<Todo, 'description'>>>,
