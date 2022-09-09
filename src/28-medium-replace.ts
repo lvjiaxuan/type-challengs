@@ -30,8 +30,6 @@ type Replace<S extends string, From extends string, To extends string> =
 /* _____________ 测试用例 _____________ */
 import type { Equal, Expect } from '@type-challenges/utils'
 
-type xx = Replace<'foobarbar', '', 'foo'>
-
 type cases = [
   Expect<Equal<Replace<'foobar', 'bar', 'foo'>, 'foofoo'>>,
   Expect<Equal<Replace<'foobarbar', 'bar', 'foo'>, 'foofoobar'>>,
