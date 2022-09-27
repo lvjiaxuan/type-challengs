@@ -4,7 +4,9 @@ type test1 = UnionToIntersection<any>
 type test2 = UnionToIntersection<unknown>
 type test3 = UnionToIntersection<never> // unknown
 type test4 = UnionToIntersection<void>
-type test5 = UnionToIntersection<1 | 2>
+type test5 = UnionToIntersection<null>
+type test6 = UnionToIntersection<undefined>
+type test7 = UnionToIntersection<1 | 2> // never
 
 // bug：互相 extends 并不能 cover 所有场景
 type NOT_EQUAL_INTERNAL<VALUE, EXPECTED> = UnionToIntersection<VALUE> extends UnionToIntersection<EXPECTED>
@@ -24,7 +26,8 @@ type FAIL_CASES_OF_NOT_EQUAL_INTERNAL = [
   // ......
 ]
 
-type NotEqual<VALUE, EXPECTED> = true extends NOT_EQUAL_INTERNAL<VALUE, EXPECTED> ? true : false
+// type NotEqual<VALUE, EXPECTED> = NOT_EQUAL_INTERNAL<VALUE, EXPECTED> extends true ? true : false // same
+type NotEqual<VALUE, EXPECTED> = true extends NOT_EQUAL_INTERNAL<VALUE, EXPECTED> ? true : false // same
 
 // Old Equal.
 type Equal<VALUE extends EXPECTED, EXPECTED> = NotEqual<VALUE, EXPECTED> extends false ? true : false
@@ -50,34 +53,57 @@ type cases1 = [
 
 // 综下，单向和双向 extends 方式不能枚举所有场景
 type cases = [
+  '1',
   any extends any ? true : false, // true
   any extends unknown ? true : false, // true
   any extends never ? true : false, // boolean
   any extends void ? true : false, // boolean
-  // ===
+  any extends null ? true : false, // boolean
+  any extends undefined ? true : false, // boolean
+  '2',
   unknown extends any ? true : false, // true
   unknown extends unknown ? true : false, // true
   unknown extends never ? true : false, // false
   unknown extends void ? true : false, // false
-  // ===
+  unknown extends null ? true : false, // false
+  unknown extends undefined ? true : false, // false
+  '3',
   never extends any ? true : false, // true
   never extends unknown ? true : false, // true
   never extends never ? true : false, // true
   never extends void ? true : false, // true
-  // ===
+  never extends null ? true : false, // true
+  never extends undefined ? true : false, // true
+  '4',
   void extends any ? true : false, // true
   void extends unknown ? true : false, // true
   void extends never ? true : false, // false
   void extends void ? true : false, // true
-  // ===
+  void extends null ? true : false, // false
+  void extends undefined ? true : false, // false
+  '5',
+  null extends any ? true : false, // true
+  null extends unknown ? true : false, // true
+  null extends never ? true : false, // false
+  null extends void ? true : false, // false
+  null extends null ? true : false, // true
+  null extends undefined ? true : false, // false
+  '6',
+  undefined extends any ? true : false, // true
+  undefined extends unknown ? true : false, // true
+  undefined extends never ? true : false, // false
+  undefined extends void ? true : false, // true
+  undefined extends null ? true : false, // false
+  undefined extends undefined ? true : false, // true
+  '7',
   { readonly a: string } extends { a: string } ? true : false, // true
   { a: string } extends { readonly a: string } ? true : false, // true
 ]
 
-// New\Final Equal.
+// Final Equal.
 /**
  * 这个三元表达式的条件
- * 1. 前者必须是带范形、返回值是范形类型的函数
+ * 1. 前者必须是带临时范形、返回值是临时范形的函数
  * 2. 后者就是要比较的类型
  */
 type Equal2<X, Y> =
