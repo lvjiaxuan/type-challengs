@@ -46,7 +46,6 @@ type PercentageParser<A extends string> = [
   A extends `${ string }%` ? '%' : '',
 ]
 
-type xx = PercentageParser<'+8'>
 
 /* _____________ 测试用例 _____________ */
 import type { Equal, Expect } from '@type-challenges/utils'
