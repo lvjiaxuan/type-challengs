@@ -28,9 +28,6 @@ type OmitByType<T, U> = {
   [P in keyof T as T[P] extends U ? never : P]: T[P]
 }
 
-type xx = OmitByType<Model, boolean>
-
-
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from '@type-challenges/utils'
 
