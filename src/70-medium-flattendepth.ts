@@ -42,7 +42,7 @@
 
 // Do implement `Depth`. `Depth` needs to be used with tuple.
 // https://github.com/microsoft/TypeScript/issues/49459
-// 我也抖机灵了, 哭~
+// 参考了 #12384, 我也抖机灵了, 哭~
 type FlattenDepth<Arr extends unknown[] = [], Depth extends number = 1, DepthTuple extends unknown[] = []> =
   DepthTuple['length'] extends Depth | 999
     ? Arr // 不打平
