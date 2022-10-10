@@ -26,14 +26,12 @@
 // n 至少从 2 开始
 type Fibonacci<
   T extends number,
-  N extends 0[] = [0, 0, 0],
+  N extends 0[] = [0, 0],
   Num1 extends 1[] = [1],
   Num2 extends 1[] = [1],
-> = T extends 1 | 2
-  ? 1
-  : N['length'] extends T
-    ? [...Num1, ...Num2]['length']
-    : Fibonacci<T, [ ...N, 0 ], Num2, [...Num1, ...Num2]>
+> = T extends 1 | 2 | N['length']
+  ? Num2['length']
+  : Fibonacci<T, [ ...N, 0 ], Num2, [...Num1, ...Num2]>
 
 
 /* _____________ 测试用例 _____________ */

@@ -2,5 +2,5 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 nx lint-staged
-nr lint
-nr tsc
+# nr lint
+# nr tsc
