@@ -28,8 +28,6 @@
 
 type Mutable<T extends Readonly<Record<PropertyKey, unknown> | unknown[]>> = { - readonly [P in keyof T]: T[P] }
 
-type xx = Mutable<Readonly<Todo1>>
-
 /* _____________ 测试用例 _____________ */
 import type { Equal, Expect } from '@type-challenges/utils'
 

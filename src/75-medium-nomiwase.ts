@@ -28,7 +28,7 @@ type AllCombinations<S extends string, U extends StringToUnion<S> = StringToUnio
   [U] extends [never]
     ? ''
     : '' | {
-      [P in U]: `${ P }${ AllCombinations<never, Exclude<U, P>> }`
+      [P in U]: `${ P }${ AllCombinations<never, Exclude<U, P>> }` // Type instantiation is excessively deep and possibly infinite.
     }[U]
 
 /* _____________ Test Cases _____________ */
