@@ -22,12 +22,10 @@
 /* _____________ 你的代码 _____________ */
 
 type Without<T extends number[], U extends number | number[]> =
-  T extends [ infer F, ...infer Rest ]
-    ? Rest extends number[]
-      ? F extends (U extends unknown[] ? U[number] : U)
-        ? Without<Rest, U>
-        : [ F, ...Without<Rest, U> ]
-      : []
+  T extends [ infer F, ...infer Rest extends number[] ]
+    ? F extends (U extends unknown[] ? U[number] : U)
+      ? Without<Rest, U>
+      : [ F, ...Without<Rest, U> ]
     : []
 
 /* _____________ 测试用例 _____________ */
