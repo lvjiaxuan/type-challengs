@@ -25,8 +25,6 @@ type Join<T extends string[], U extends string | number, Result extends string =
     ? Join<R, U, `${ Result }${ Result extends '' ? '' : U }${ F }`>
     : Result
 
-type xx = Join<['a', 'p', 'p', 'l', 'e'], '-'>
-
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from '@type-challenges/utils'
 
