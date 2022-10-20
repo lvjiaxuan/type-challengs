@@ -20,7 +20,7 @@
 
 /* _____________ Your Code Here _____________ */
 
-type LastIndexOf<T extends unknown[], U, CountArr extends 0[] = []> =
+export type LastIndexOf<T extends unknown[], U, CountArr extends 0[] = []> =
   T extends [ ...infer R, infer L ]
     ? (<T>() => T extends L ? 1 : 2) extends (<T>() => T extends U ? 1 : 2)
       ? R['length']

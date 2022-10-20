@@ -19,7 +19,7 @@
 
 /* _____________ Your Code Here _____________ */
 
-type IndexOf<T extends unknown[], U, CountArr extends 0[] = []> =
+export type IndexOf<T extends unknown[], U, CountArr extends 0[] = []> =
   T extends [ infer First, ...infer Rest ]
     ? (<T>() => T extends First ? 1 : 2) extends (<T>() => T extends U ? 1 : 2) // from core code of `Equal`
       ? CountArr['length']
