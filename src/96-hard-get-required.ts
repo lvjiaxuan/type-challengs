@@ -22,7 +22,8 @@
 /* _____________ 你的代码 _____________ */
 
 type GetRequired<T> = {
-  [ P in keyof T as { [_p in P]: T[P] } extends Required<{ [_p in P]: T[P] }> ? P : never]: T[P]
+  // [ P in keyof T as { [_p in P]: T[P] } extends Required<{ [_p in P]: T[P] }> ? P : never]: T[P]
+  [P in keyof T as T[P] extends Required<T>[P] ? P : never]: T[P]
 }
 
 // 知识点：好像没啥，就是基本功操作。

@@ -22,7 +22,8 @@
 /* _____________ 你的代码 _____________ */
 
 type GetOptional<T> = {
-  [ P in keyof T as { [_p in P]: T[P] } extends Required<{ [_p in P]: T[P] }> ? never : P]: T[P]
+  // [ P in keyof T as { [_p in P]: T[P] } extends Required<{ [_p in P]: T[P] }> ? never : P]: T[P]
+  [P in keyof T as T[P] extends Required<T>[P] ? never : P]: T[P]
 }
 
 

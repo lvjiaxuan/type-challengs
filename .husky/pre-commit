@@ -3,4 +3,4 @@
 
 nx lint-staged
 # nr lint
-# nr tsc
+nr tsc
