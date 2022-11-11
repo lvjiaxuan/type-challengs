@@ -27,8 +27,6 @@ type RequiredKeys<T, P extends keyof T = keyof T> =
       : never
     : never
 
-type xxx = RequiredKeys<{ a: number; b?: string }>
-
 /* _____________ 测试用例 _____________ */
 import type { Equal, Expect } from '@type-challenges/utils'
 
