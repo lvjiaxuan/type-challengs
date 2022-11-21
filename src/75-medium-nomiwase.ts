@@ -24,11 +24,11 @@ type StringToUnion<S extends string = ''> = S extends `${ infer F }${ infer R }`
   ? F | StringToUnion<R>
   : never
 
-type AllCombinations<S extends string, U extends StringToUnion<S> = StringToUnion<S>> =
-  [U] extends [never]
+type AllCombinations<S extends string, U extends string = StringToUnion<S>> =
+  { a: U } extends { a: never }
     ? ''
     : '' | {
-      [P in U]: `${ P }${ AllCombinations<never, Exclude<U, P>> }` // Type instantiation is excessively deep and possibly infinite.
+      [P in U]: `${ P }${ AllCombinations<never, Exclude<U, P>> }` // never 传入范形后，该范形不能直接进行使用，需要转为 never 相关的 Tuple/Object Types 类型.
     }[U]
 
 /* _____________ Test Cases _____________ */
