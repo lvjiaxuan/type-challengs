@@ -25,8 +25,6 @@ type DropString<S extends string, R extends string, _Result extends string = ''>
     ? DropString<Rest, R, `${ _Result }${ F extends String2Union<R> ? '' : F }`>
     : _Result
 
-type xx = DropString<'butter fly!', ''>
-
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from '@type-challenges/utils'
 
