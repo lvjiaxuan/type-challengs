@@ -32,7 +32,6 @@ type cases = [
   Expect<Equal<IsRequiredKey<{ a: number; b?: string }, 'b' | 'a'>, false>>,
 ]
 
-
 /* _____________ Further Steps _____________ */
 /*
   > Share your solutions: https://tsch.js.org/2857/answer
