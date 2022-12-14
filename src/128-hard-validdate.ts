@@ -27,45 +27,72 @@
 
 /* _____________ Your Code Here _____________ */
 
-// Mine version 1
-
-type Day31 = '01' | '03' | '05' | '07' | '08' | '10' | '12'
-type Day30 = '04' | '06' | '09' | '11'
-type Day28 = '02'
+// Mine version
+type Month31 = '01' | '03' | '05' | '07' | '08' | '10' | '12'
+type Month30 = '04' | '06' | '09' | '11'
+type Month28 = '02'
 
 type _AllNumber = '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '0'
 
-type ValidDate<T extends string> =
-  T extends `${ Day31 }${ infer Day1 }${ infer Day2 }`
-    ? Day1 extends '0'
-      ? Day2 extends '0' ? false : true // == __00
-      : Day1 extends '1' | '2'
-        ? Day2 extends _AllNumber ? true : false
-        : Day1 extends '3'
-          ? Day2 extends '0' | '1'
+type ValidDate2<T extends string> =
+  T extends `${ Month31 }${ infer Date1 }${ infer Date2 }`
+    ? Date1 extends '0'
+      ? Date2 extends '0' ? false : true // == __00
+      : Date1 extends '1' | '2'
+        ? Date2 extends _AllNumber ? true : false
+        : Date1 extends '3'
+          ? Date2 extends '0' | '1'
             ? true
             : false // > __32
           : false // > 4___
-    : T extends `${ Day30 }${ infer Day1 }${ infer Day2 }`
-      ? Day1 extends '0'
-        ? Day2 extends '0' ? false : true // == __00
-        : Day1 extends '1' | '2'
-          ? Day2 extends _AllNumber ? true : false
-          : Day1 extends '3'
-            ? Day2 extends '0'
+    : T extends `${ Month30 }${ infer Date1 }${ infer Date2 }`
+      ? Date1 extends '0'
+        ? Date2 extends '0' ? false : true // == __00
+        : Date1 extends '1' | '2'
+          ? Date2 extends _AllNumber ? true : false
+          : Date1 extends '3'
+            ? Date2 extends '0'
               ? true
               : false // > __31
             : false // 4___
-      : T extends `${ Day28 }${ infer Day1 }${ infer Day2 }`
-        ? Day1 extends '0'
-          ? Day2 extends '0' ? false : true // == __00
-          : Day1 extends '1'
-            ? Day2 extends _AllNumber ? true : false
-            : Day1 extends '2'
-              ? Day2 extends '9'
+      : T extends `${ Month28 }${ infer Date1 }${ infer Date2 }`
+        ? Date1 extends '0'
+          ? Date2 extends '0' ? false : true // == __00
+          : Date1 extends '1'
+            ? Date2 extends _AllNumber ? true : false
+            : Date1 extends '2'
+              ? Date2 extends '9'
                 ? false // > 0229
                 : true
               : false
+        : false
+
+// https://github.com/type-challenges/type-challenges/issues/16935
+type M1 = '01' | ' 03' | '05' | '07' | '08' | '10' | '12'
+type M2 = '04' | '06' | '09' | '11'
+type M3 = '02'
+
+type AddZero<T extends number> =
+  `${ T }` extends `${ infer K }${ infer F }`
+    ? F extends ''
+      ? `0${ K }`
+      : `${ T }`
+    : never
+
+type D1<T = 28, S extends 0[] = [0], R = never> =
+  S['length'] extends T
+    ? R | `${ AddZero<S['length']> }`
+    : D1<T, [...S, 0], R | `${ AddZero<S['length']> }`>
+type D2 = '29' | '30'
+type D3 = '31'
+
+type ValidDate<T extends string> =
+  T extends `${ M1 }${ D1 | D2 | D3 }`
+    ? true
+    : T extends `${ M2 }${ D1 | D2 }`
+      ? true
+      : T extends `${ M3 }${ D1 } `
+        ? true
         : false
 
 /* _____________ Test Cases _____________ */
