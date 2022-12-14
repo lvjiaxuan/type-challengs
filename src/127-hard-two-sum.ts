@@ -14,16 +14,16 @@
 /* _____________ Your Code Here _____________ */
 
 // Mine
-// type _Number2ArrayLength<N extends number, _Result extends 0[] = []> = _Result['length'] extends N ? _Result : _Number2ArrayLength<N, [ ..._Result, 0 ]>
-// type _NumberArray2Length<A extends number[]> = A extends [ infer F extends number, ...infer Rest extends number[] ] ? [ _Number2ArrayLength<F>, ..._NumberArray2Length<Rest> ] : []
+// type _Number2Array<N extends number, _Result extends 0[] = []> = _Result['length'] extends N ? _Result : _Number2Array<N, [ ..._Result, 0 ]>
+// type _NumberArray<A extends number[]> = A extends [ infer F extends number, ...infer Rest extends number[] ] ? [ _Number2Array<F>, ..._NumberArray<Rest> ] : []
 // type TwoSum<
 //   T extends number[],
 //   U extends number,
 //   _Head extends 0[] = [0],
 //   _HeadLength extends number = _Head['length'],
-//   _T extends 0[][] = _NumberArray2Length<T>,
+//   _T extends 0[][] = _NumberArray<T>,
 // > = T extends [ infer F extends number, ...infer Rest extends number[] ]
-//   ? [ ..._Number2ArrayLength<F>, ..._T[_HeadLength] ]['length'] extends U
+//   ? [ ..._Number2Array<F>, ..._T[_HeadLength] ]['length'] extends U
 //     ? true
 //     : _Head['length'] extends _T['length']
 //       ? TwoSum<Rest, U>
