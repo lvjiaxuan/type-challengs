@@ -16,8 +16,6 @@ type LengthOfString<S extends string, SArr extends unknown[] = []> = S extends '
   ? SArr['length']
   : S extends `${ string }${ infer REST }` ? LengthOfString<REST, [...SArr, 1]> : never
 
-type xx = LengthOfString<'kumiko'>
-
 /* _____________ 测试用例 _____________ */
 import type { Equal, Expect } from '@type-challenges/utils'
 
