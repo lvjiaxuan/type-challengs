@@ -1,21 +1,19 @@
+/* eslint-disable @typescript-eslint/no-namespace */
 /*
   14188 - Run-length encoding
   -------
-  by Hen Hedymdeith (@alfaproxima) #hard 
-  
+  by Hen Hedymdeith (@alfaproxima) #hard
+
   ### Question
-  
+
   Given a `string` sequence of a letters f.e. `AAABCCXXXXXXY`. Return run-length encoded string `3AB2C6XY`.
   Also make a decoder for that string.
-  
+
   > View on GitHub: https://tsch.js.org/14188
 */
 
 
 /* _____________ Your Code Here _____________ */
-
-type _Str2Num<S extends string> = S extends `${ infer N extends number }` ? N : never
-type _Num2Arr<N extends number, _Result extends 0[] = []> = _Result['length'] extends N ? _Result : _Num2Arr<N, [ ..._Result, 0 ]>
 
 namespace RLE {
   export type Encode<S extends string, _Last extends string = '', _Length extends 0[] = [0], _Result extends string = ''> =
@@ -27,10 +25,16 @@ namespace RLE {
           : `${ _Result }${ RLE.Encode<S> }`
       : _Result
 
-  export type Decode<S extends string> = any
+  export type Decode<S extends string, _CountHelper extends 0[] = [], _Result extends string = ''> =
+    S extends `${ infer Length extends number }${ infer Character }${ infer Rest }`
+      ? _CountHelper['length'] extends Length
+        ? `${ _Result }${ Decode<Rest, []> }`
+        : Decode<S, [ ..._CountHelper, 0 ], `${ _Result }${ Character }`>
+      : S extends `${ infer SingleCharacter }${ infer Rest }`
+        ? Decode<Rest, [], `${ _Result }${ SingleCharacter }`>
+        : _Result
 }
 
-type xx = RLE.Decode<'3AB2C6XY'>
 
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from '@type-challenges/utils'
@@ -44,7 +48,6 @@ type cases = [
 ]
 
 
-
 /* _____________ Further Steps _____________ */
 /*
   > Share your solutions: https://tsch.js.org/14188/answer
@@ -52,3 +55,4 @@ type cases = [
   > More Challenges: https://tsch.js.org
 */
 
+/* eslint-enable @typescript-eslint/no-namespace */
