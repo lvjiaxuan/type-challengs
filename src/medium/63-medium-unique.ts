@@ -20,7 +20,7 @@
 
 
 /* _____________ Your Code Here _____________ */
-import { IndexOf } from './84-medium-indexof'
+import { IndexOf } from './../medium/60-medium-indexof'
 
 type Unique<T extends unknown[], Result extends unknown[] = []> =
   T extends [ ...infer R, infer L ]
@@ -29,9 +29,6 @@ type Unique<T extends unknown[], Result extends unknown[] = []> =
       : Unique<R, [ ...Result ]>
     : Result
 
-
-type xxx = Unique<[1, 'a', 2, 'b', 2, 'a']>
-type qqq = Unique<[string, number, 1, 'a', 1, string, 2, 'b', 2, number]>
 
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from '@type-challenges/utils'
