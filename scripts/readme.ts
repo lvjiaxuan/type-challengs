@@ -8,6 +8,7 @@ const main = async () => {
   const res = await octokit.rest.repos.getReadme({
     owner: 'type-challenges',
     repo: 'type-challenges',
+    ref: 'main',
   })
 
   fsp.writeFileSync('README.md', res.data.content, { encoding: 'base64' })
