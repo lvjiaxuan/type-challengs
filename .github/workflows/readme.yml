@@ -1,0 +1,24 @@
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: 0 0 * * 0
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      # https://github.com/actions/checkout
+      - uses: actions/checkout@v3
+
+      # https://github.com/actions/setup-node
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - run: |
+          corepack enable pnpm
+          pnpm config set auto-install-peers=true
+          pnpm i --frozen-lockfile
+          pnpm dlx jiti ./scripts/readme.ts
+        env:
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
