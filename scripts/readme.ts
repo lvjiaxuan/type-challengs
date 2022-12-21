@@ -13,8 +13,7 @@ const main = async () => {
   })
 
   fsp.writeFileSync('README.md', res.data.content, { encoding: 'base64' })
-  execSync('git add .')
-  execSync('git commit -m "docs: sync from org."')
+
   process.exit(0)
 }
 
