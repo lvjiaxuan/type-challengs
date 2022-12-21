@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@lvjiaxuan/eslint-plugin': ^0.4.2
   '@type-challenges/utils': ^0.1.1
+  '@types/node': ^18.11.17
   eslint: ^8.30.0
   husky: ^8.0.2
   lint-staged: ^13.1.0
@@ -11,6 +12,7 @@ specifiers:
 devDependencies:
   '@lvjiaxuan/eslint-plugin': 0.4.2_lzzuuodtsqwxnvqeq4g4likcqa
   '@type-challenges/utils': 0.1.1
+  '@types/node': 18.11.17
   eslint: 8.30.0
   husky: 8.0.2
   lint-staged: 13.1.0
@@ -158,6 +160,10 @@ packages:
     resolution: {integrity: sha512-W864tg/Osz1+9f4lrGTZpCSO5/z4608eUp19tbozkq2HJK6i3z1kT0H9tlADXuYIb1YYOBByU4Jsqkk75q48qA==}
     dependencies:
       '@types/unist': 2.0.6
+    dev: true
+
+  /@types/node/18.11.17:
+    resolution: {integrity: sha512-HJSUJmni4BeDHhfzn6nF0sVmd1SMezP7/4F0Lq+aXzmp2xm9O7WXrUtHW/CHlYVtZUbByEvWidHqRtcJXGF2Ng==}
     dev: true
 
   /@types/semver/7.3.12:
