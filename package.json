@@ -29,15 +29,6 @@
     "root": true,
     "extends": [
       "plugin:@lvjiaxuan/recommended"
-    ],
-    "rules": {
-      "@typescript-eslint/keyword-spacing": [
-        "warn",
-        {
-          "after": true,
-          "before": true
-        }
-      ]
-    }
+    ]
   }
 }

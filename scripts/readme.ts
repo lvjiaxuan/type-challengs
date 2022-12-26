@@ -1,6 +1,6 @@
 import { Octokit } from '@octokit/rest'
+import { execSync } from 'node:child_process'
 import fsp from 'node:fs'
-import { text } from 'stream/consumers'
 
 const octokit = new Octokit({ auth: process.env.TOKEN })
 
@@ -21,6 +21,14 @@ const main = async () => {
       .replaceAll('./questions', 'https://github.com/type-challenges/type-challenges/blob/main/questions'),
     { encoding: 'utf-8' },
   )
+
+  execSync('git add .')
+  const gitStatus = execSync('git status').toString()
+  if (!gitStatus.includes('working tree clean')) {
+    execSync('git commit -m "docs: sync from org."')
+    execSync('git push')
+  }
+
 
   process.exit(0)
 }
