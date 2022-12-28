@@ -8,7 +8,7 @@ import https from 'node:https'
 const getNewChallenge = () => {
 
   const readmeContent = fs.readFileSync('./README.md', { encoding: 'utf-8' })
-  const matches = readmeContent.match(/\d+-(easy|medium|hard|extreme){1}-\w+/g)!
+  const matches = readmeContent.match(/\d+-(easy|medium|hard|extreme){1}-[\w|-]+(?=\/README\.md)/g)!
   const originLevels = {
     easy: new Set<string>(),
     medium: new Set<string>(),
@@ -17,14 +17,14 @@ const getNewChallenge = () => {
   }
   matches.forEach(item =>
     originLevels[item.match(/easy|medium|hard|extreme/)![0] as keyof typeof originLevels]
-      .add(item.match(/(easy|medium|hard|extreme){1}-\w+/)![0]),
+      .add(item.match(/(easy|medium|hard|extreme){1}-[\w|-]+/)![0]),
   )
 
   const localLevels = {
-    easy: fs.readdirSync('./src/easy').map(item => item.match(/(easy|medium|hard|extreme){1}-\w+/)![0]),
-    medium: fs.readdirSync('./src/medium').map(item => item.match(/(easy|medium|hard|extreme){1}-\w+/)![0]),
-    hard: fs.readdirSync('./src/hard').map(item => item.match(/(easy|medium|hard|extreme){1}-\w+/)![0]),
-    extreme: fs.readdirSync('./src/extreme').map(item => item.match(/(easy|medium|hard|extreme){1}-\w+/)![0]),
+    easy: fs.readdirSync('./src/easy').map(item => item.match(/(easy|medium|hard|extreme){1}-[\w|-]+(?=\.ts)/)![0]),
+    medium: fs.readdirSync('./src/medium').map(item => item.match(/(easy|medium|hard|extreme){1}-[\w|-]+(?=\.ts)/)![0]),
+    hard: fs.readdirSync('./src/hard').map(item => item.match(/(easy|medium|hard|extreme){1}-[\w|-]+(?=\.ts)/)![0]),
+    extreme: fs.readdirSync('./src/extreme').map(item => item.match(/(easy|medium|hard|extreme){1}-[\w|-]+(?=\.ts)/)![0]),
   }
 
   const lacks = {

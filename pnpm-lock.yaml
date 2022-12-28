@@ -4,7 +4,7 @@ specifiers:
   '@lvjiaxuan/eslint-plugin': ^0.4.2
   '@octokit/rest': ^19.0.5
   '@type-challenges/utils': ^0.1.1
-  '@types/node': ^18.11.17
+  '@types/node': ^18.11.18
   dotenv: ^16.0.3
   eslint: ^8.30.0
   husky: ^8.0.2
@@ -15,7 +15,7 @@ devDependencies:
   '@lvjiaxuan/eslint-plugin': 0.4.2_lzzuuodtsqwxnvqeq4g4likcqa
   '@octokit/rest': 19.0.5
   '@type-challenges/utils': 0.1.1
-  '@types/node': 18.11.17
+  '@types/node': 18.11.18
   dotenv: 16.0.3
   eslint: 8.30.0
   husky: 8.0.2
@@ -282,8 +282,8 @@ packages:
       '@types/unist': 2.0.6
     dev: true
 
-  /@types/node/18.11.17:
-    resolution: {integrity: sha512-HJSUJmni4BeDHhfzn6nF0sVmd1SMezP7/4F0Lq+aXzmp2xm9O7WXrUtHW/CHlYVtZUbByEvWidHqRtcJXGF2Ng==}
+  /@types/node/18.11.18:
+    resolution: {integrity: sha512-DHQpWGjyQKSHj3ebjFI/wRKcqQcdR+MoFBygntYOZytCqNfkd2ZC4ARDJ2DQqhjH5p85Nnd3jhUJIXrszFX/JA==}
     dev: true
 
   /@types/semver/7.3.12:
