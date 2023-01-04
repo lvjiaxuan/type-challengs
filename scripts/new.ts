@@ -47,7 +47,7 @@ const getNewChallenge = () => {
     const challenges = lacks[key as keyof typeof originLevels]
     if (challenges.length) {
       const sorts = fs.readdirSync(`./src/${ key }`).sort((a, b) => +b.match(/\d+/)! - +a.match(/\d+/)!)
-      const idx = +sorts[0].match(/\d+/)! + 1
+      const idx = sorts.length ? +sorts[0].match(/\d+/)! + 1 : 0
       // fs.writeFileSync(`./src/${ key }/${ idx }-${ challenges[0] }.ts`, '', { encoding: 'utf-8' })
       newChallengeWithoutNo = `${ challenges[0] }`
       writePath = `./src/${ key }/${ idx }-${ challenges[0] }.ts`
