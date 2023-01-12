@@ -27,7 +27,7 @@
 /* _____________ Your Code Here _____________ */
 // 基于 #17226 思路：Arr['length'] 先到达谁（T | U），就说明谁小
 // 他是先比较 T ，用了 2 次 extends
-// 我试一下先比较 u ，发现得用 3 次 extends
+// 我试一下先比较 U ，发现得用 3 次 extends
 type GreaterThan<T extends number, U extends number, Arr extends 0[] = []> =
   U extends Arr['length']
     ? T extends Arr['length']
