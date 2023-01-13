@@ -1,4 +1,4 @@
 {
   "typescript.tsdk": "node_modules/typescript/lib",
-  "commentTranslate.hover.enabled": false
+  "commentTranslate.hover.enabled": true
 }
