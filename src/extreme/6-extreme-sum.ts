@@ -31,8 +31,8 @@ type _Number2Array<
   : _Number2Array<N, _AddOne, [ ..._Result, 0 ]>
 
 type _TwoSingleDigitSum<
-  A extends string,
-  B extends string,
+  A extends _DigitString,
+  B extends _DigitString,
   _PlusOne extends boolean = false,
   _Carry extends boolean = false,
   _Counter extends 0[] = [],
@@ -47,8 +47,8 @@ type _TwoSingleDigitSum<
       ? { carry: true, digit: _Counter['length'] }
       : _TwoSingleDigitSum<A, B, _PlusOne, true, [ ..._Counter, 0 ]>
 
-type _DigitNumber = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'
-type _GetLast<T extends string | number | bigint, _Rest extends string = ''> = `${ T }` extends _DigitNumber
+type _DigitString = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'
+type _GetLast<T extends string | number | bigint, _Rest extends string = ''> = `${ T }` extends _DigitString
   ? { rest: _Rest, last: `${ T }` }
   : `${ T }` extends `${ infer Rest extends string }${ infer I extends string }`
     ? _GetLast<I, `${ _Rest }${ Rest }`>
@@ -59,8 +59,8 @@ type Sum<
   B extends string | number | bigint,
   _PlusOne extends boolean = false,
   _Result extends string = '',
-  _AL extends { rest: string, last: _DigitNumber } = _GetLast<A>,
-  _BL extends { rest: string, last: _DigitNumber } = _GetLast<B>,
+  _AL extends { rest: string, last: _DigitString } = _GetLast<A>,
+  _BL extends { rest: string, last: _DigitString } = _GetLast<B>,
   _LastSum extends { carry: boolean, digit: number } = _TwoSingleDigitSum<_AL['last'], _BL['last'], _PlusOne>,
 > = `${ _AL['rest'] }${ _BL['rest'] }` extends ''
   ? `${ _LastSum['carry'] extends true ? 1 : '' }${ _LastSum['digit'] }${ _Result }`
