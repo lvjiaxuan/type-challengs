@@ -37,7 +37,7 @@
 type Enum<
   T extends readonly string[],
   N extends boolean = false,
-  R extends {} = {},
+  R extends Record<PropertyKey, unknown> = {},
 > = T extends readonly [...infer Head extends string[], infer Tail extends string] // 关键点：倒数
   ? Enum<Head, N, R & Record<Capitalize<Tail>, N extends true ? Head['length'] : Tail>> // 关键点：Capitalize
   : Readonly<R>

@@ -20,11 +20,12 @@ const getNewChallenge = () => {
       .add(item.match(/(easy|medium|hard|extreme){1}-[\w|-]+/)![0]),
   )
 
+
   const localLevels = {
-    easy: fs.readdirSync('./src/easy').map(item => item.match(/(easy|medium|hard|extreme){1}-[\w|-]+(?=\.ts)/)![0]),
-    medium: fs.readdirSync('./src/medium').map(item => item.match(/(easy|medium|hard|extreme){1}-[\w|-]+(?=\.ts)/)![0]),
-    hard: fs.readdirSync('./src/hard').map(item => item.match(/(easy|medium|hard|extreme){1}-[\w|-]+(?=\.ts)/)![0]),
-    extreme: fs.readdirSync('./src/extreme').map(item => item.match(/(easy|medium|hard|extreme){1}-[\w|-]+(?=\.ts)/)![0]),
+    easy: fs.readdirSync('./src/easy').map(item => item.match(/(easy|medium|hard|extreme){1}-[\w|-]+/)![0]),
+    medium: fs.readdirSync('./src/medium').map(item => item.match(/(easy|medium|hard|extreme){1}-[\w|-]+/)![0]),
+    hard: fs.readdirSync('./src/hard').map(item => item.match(/(easy|medium|hard|extreme){1}-[\w|-]+/)![0]),
+    extreme: fs.readdirSync('./src/extreme').map(item => item.match(/(easy|medium|hard|extreme){1}-[\w|-]+/)![0]),
   }
 
   const lacks = {
