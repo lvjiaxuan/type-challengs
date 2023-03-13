@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-nix lint-staged
+pnpm dlx lint-staged
 # nr lint
-nr tsc
+pnpm run tsc
