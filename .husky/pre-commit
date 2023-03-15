@@ -3,4 +3,4 @@
 
 pnpm dlx lint-staged
 # nr lint
-pnpm run tsc
+pnpm tsc
