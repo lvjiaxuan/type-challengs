@@ -41,12 +41,12 @@ type cases = [
   Expect<Equal<TupleToObject<typeof tupleMix>, { 1: 1; '2': '2'; 3: 3; '4': '4' }>>,
 ]
 
-/* eslint-disable @typescript-eslint/ban-types */
 
+/* eslint-disable @typescript-eslint/ban-types */
 // @ts-expect-error
 type error = TupleToObject<[[1, 2], {}]>
-
 /* eslint-enable @typescript-eslint/ban-types */
+
 
 /* _____________ 下一步 _____________ */
 /*
