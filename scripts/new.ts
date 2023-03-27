@@ -64,6 +64,12 @@ const getNewChallenge = () => {
       originChallengeWithNo = item
     }
   })
+
+  if (!writePath) {
+    console.log('No new challenge.')
+    process.exit(0)
+  }
+
   return {
     writePath,
     originChallengeWithNo,
