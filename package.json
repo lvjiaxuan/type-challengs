@@ -9,7 +9,7 @@
     "lint": "eslint . --fix --cache",
     "tsc": "tsc --noEmit",
     "prepare": "husky install",
-    "n": "nix jiti ./scripts/new.ts"
+    "n": "nlx jiti ./scripts/new.ts"
   },
   "devDependencies": {
     "@lvjiaxuan/eslint-plugin": "^0.10.1",
