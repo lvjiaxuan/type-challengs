@@ -15,12 +15,12 @@
     "@lvjiaxuan/eslint-plugin": "^0.10.1",
     "@octokit/rest": "^19.0.7",
     "@type-challenges/utils": "^0.1.1",
-    "@types/node": "^18.15.3",
+    "@types/node": "^18.15.11",
     "dotenv": "^16.0.3",
-    "eslint": "^8.36.0",
+    "eslint": "^8.38.0",
     "husky": "^8.0.3",
-    "lint-staged": "^13.2.0",
-    "typescript": "^5.0.2"
+    "lint-staged": "^13.2.1",
+    "typescript": "^5.0.4"
   },
   "lint-staged": {
     "*.ts": [
