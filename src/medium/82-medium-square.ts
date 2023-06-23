@@ -24,51 +24,83 @@ type _SingleSquareMap = {
   '9': '81',
 }
 
+// type _Number2Array<
+//   N extends string | number,
+//   _AddOne extends boolean = false,
+//   _Result extends 0[] = [],
+//   _NN extends number = `${ N }` extends `${ infer I extends number }` ? I : never,
+// > = _Result['length'] extends _NN
+//   ? _AddOne extends false ? _Result : [ 0, ..._Result ]
+//   : _Number2Array<N, _AddOne, [ ..._Result, 0 ]>
+
 type _Reverse<A extends string | number | bigint, _Result extends string = ''> =
   `${ A }` extends `${ infer AH }${ infer AT }`
     ? _Reverse<AT, `${ AH }${ _Result }`>
     : _Result
+type Split<S extends string | number> = `${ S }` extends `${ infer A }${ infer B }`
+  ? [ ...(B extends '' ? [] : Split<B>), `${ A }` ]
+  : [`${ S }`]
+type testOfSplit = Split<'352'>
 
-// type DigsNext = { '0': '1', '1': '2', '2': '3', '3': '4', '4': '5', '5': '6', '6': '7', '7': '8', '8': '9' }
-// type DigsPrev = { [K in keyof DigsNext as DigsNext[K]]: K }
-// type _SubOne<A> = A extends `${ infer AH }${ infer AT }`
-//   ? AH extends '0'
-//     ? `9${ _SubOne<AT> }`
-//     : `${ DigsPrev[AH & keyof DigsPrev] }${ AT }`
-//   : never
-// type SubOne<A extends string | number | bigint> = _Reverse<_SubOne<_Reverse<A>>>
+// type Sum<
+//   A extends number,
+//   B extends number,
+//   Pos extends 0[] = [],
+//   _Carry extends 0[] = [],
+//   _A extends string[] = Split<A>,
+//   _B extends string[] = Split<B>,
+//   _PosA extends 0[] = _Number2Array<_A[Pos['length']]>,
+//   _PosB extends 0[] = _Number2Array<_B[Pos['length']]>,
+//   _StepSum extends number = [ ..._PosA, ..._PosB ]['length'],
+// > = `${ _StepSum }` extends `${ infer Carry extends number }${ infer Tail extends number }`
+//   ? `${ Tail }${ Sum<A, B, [ ...Pos, 0 ], _Number2Array<Carry>> }`
+//   : `${ _StepSum }`
 
-// type Sub<
-//   A extends string | number | bigint,
-//   B extends string | number | bigint,
-//   _Counter extends 0[] = [],
-//   _B extends number = `${ B }` extends `${ infer NB extends number }` ? NB : never,
-// > = _Counter['length'] extends _B
-//   ? A
-//   : Sub<SubOne<A>, B, [ ..._Counter, 0 ]>
-
-type _Number2Array<
-  N extends string,
-  _AddOne extends boolean = false,
-  _Result extends 0[] = [],
-  _NN extends number = `${ N }` extends `${ infer I extends number }` ? I : never,
-> = _Result['length'] extends _NN
-  ? _AddOne extends false ? _Result : [ 0, ..._Result ]
-  : _Number2Array<N, _AddOne, [ ..._Result, 0 ]>
-
-type _Split<S extends string> = `${ S }` extends `${ infer A }${ infer B }`
-  ? [ ...(B extends '' ? [] : _Split<B>), `${ A }` ]
-  : [S]
-type Split<S extends string> = _Split<_Reverse<S>>
+// type test = Sum<12, 399>
 
 type GetSingleNumSquare<N extends string> = N extends `${ infer NN extends keyof _SingleSquareMap }${ infer Zeroes }`
   ? `${ _SingleSquareMap[NN] }${ Zeroes }${ Zeroes }`
   : never
+type testOfGetSingleNumSquare = GetSingleNumSquare<'90'> // "8100"
 
-type Sum = Split<'54'> extends [ infer A extends string, infer B extends string]
-  ? `${ GetSingleNumSquare<A> }${ GetSingleNumSquare<B> }`
+// // a^2 + b^2
+type SumA<T extends string> = Split<T> extends [ infer A extends string, infer B extends string]
+  ? `${ GetSingleNumSquare<B> }${ GetSingleNumSquare<A> extends keyof _SingleSquareMap ? `0${ GetSingleNumSquare<A> }` : GetSingleNumSquare<A> }`
   : never
+type testOfSumA = SumA<'54'> // "2509"
 
+// // 2ab
+// // type SumB<A extends string, B extends string, _A = >
+
+
+// type TinyMultiply<
+//   A extends number,
+//   B extends number,
+//   _Counter extends 0[] = [],
+//   _Acc extends 0[] = [],
+//   _AArr extends 0[] = _Number2Array<A>,
+// > = B extends _Counter['length']
+//   ? _Acc['length']
+//   : TinyMultiply<A, B, [ ..._Counter, 0 ], [ ..._Acc, ..._AArr ]>
+// type testOfTinyMultiply = TinyMultiply<10, 9>
+
+
+// type TinySum<A extends number, B extends number> = [ ..._Number2Array<A>, ..._Number2Array<B> ]['length']
+
+// type xxx<
+//   A extends number,
+//   B extends number,
+//   _RA extends string = _Reverse<A>,
+//   _RB extends string = _Reverse<B>,
+//   _DataA extends { F: number, Rest: number } =
+//   _RA extends `${ infer F extends number }${ infer Rest extends number }` ? { F: F, Rest: Rest } : never,
+//   _DataB extends { F: number, Rest: number } =
+//   _RB extends `${ infer F extends number }${ infer Rest extends number }` ? { F: F, Rest: Rest } : never,
+// > = TinySum<_DataA['F'], _DataB['F']> extends `${ infer Carry extends number }${ infer Tail extends number }`
+//   ? `${ Tail }${ xxx<_DataA['Rest'], _DataB['Rest']> }`
+//   : `${ TinySum<_DataA['F'], _DataB['F']> }`
+
+// type qq = xxx<1, 2>
 
 /* _____________ Test Cases _____________ */
 import type {
