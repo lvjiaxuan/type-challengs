@@ -6,7 +6,7 @@
   "license": "MIT",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint . --fix --cache",
+    "lint": "eslint . --fix",
     "tsc": "tsc --noEmit",
     "prepare": "husky install",
     "n": "nlx jiti ./scripts/new.ts"
@@ -24,7 +24,7 @@
   },
   "lint-staged": {
     "*.ts": [
-      "eslint --fix --cache"
+      "eslint --fix"
     ]
   },
   "eslintConfig": {
