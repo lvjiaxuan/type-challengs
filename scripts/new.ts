@@ -52,8 +52,7 @@ const getNewChallenge = () => {
       // fs.writeFileSync(`./src/${ key }/${ idx }-${ challenges[0] }.ts`, '', { encoding: 'utf-8' })
       newChallengeWithoutNo = `${ challenges[0] }`
       writePath = `./src/${ key }/${ idx }-${ challenges[0] }.ts`
-      console.log(`New ${ key } challenge`, challenges)
-      console.log(`Successfully add ${ key } challenges: src/${ key }/${ idx }-${ challenges[0] }.ts`)
+      console.log(`New ${ key } challenges found: `, challenges)
       break
     }
   }
@@ -112,6 +111,7 @@ async function main() {
   const tschUrl = await getTschUrl(challenge)
   const decode = await getTschUrlDecode(tschUrl)
   fs.writeFileSync(writePath, decode, { encoding: 'utf-8' })
+  console.log(`Successfully add: ${ writePath }`)
 }
 
 try {
