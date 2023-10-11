@@ -12,15 +12,15 @@
     "n": "nlx jiti ./scripts/new.ts"
   },
   "devDependencies": {
-    "@lvjiaxuan/eslint-plugin": "^0.15.0",
-    "@octokit/rest": "^20.0.1",
+    "@lvjiaxuan/eslint-plugin": "^0.20.0",
+    "@octokit/rest": "^20.0.2",
     "@type-challenges/utils": "^0.1.1",
-    "@types/node": "^20.4.2",
+    "@types/node": "^20.8.4",
     "dotenv": "^16.3.1",
-    "eslint": "^8.45.0",
+    "eslint": "^8.51.0",
     "husky": "^8.0.3",
-    "lint-staged": "^13.2.3",
-    "typescript": "^5.1.6"
+    "lint-staged": "^14.0.1",
+    "typescript": "^5.2.2"
   },
   "lint-staged": {
     "*.ts": [
