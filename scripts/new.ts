@@ -91,6 +91,7 @@ const getTschUrl = (challenge: string) => {
 
 const getTschUrlDecode = (url: string) =>
   new Promise<string>((resolve, reject) =>
+    // eslint-disable-next-line no-promise-executor-return
     https.get(url, response => {
       let tspUrl = ''
 
