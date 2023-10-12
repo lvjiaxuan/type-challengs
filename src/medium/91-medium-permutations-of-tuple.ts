@@ -27,25 +27,31 @@
 
 /* _____________ Your Code Here _____________ */
 
-type RestUnion<T extends unknown[], Counter extends 0[] = []> =
-T extends []
-  ? []
-  : Counter['length'] extends T['length']
-    ? never
-    : T extends [infer First, ...infer Rest]
-      ? [ ...Rest, First ] | RestUnion<[ ...Rest, First ], [ ...Counter, 0 ]>
-      : never
+// type RestUnion<T extends unknown[], Counter extends 0[] = []> =
+// T extends []
+//   ? []
+//   : Counter['length'] extends T['length']
+//     ? never
+//     : T extends [infer First, ...infer Rest]
+//       ? [ ...Rest, First ] | RestUnion<[ ...Rest, First ], [ ...Counter, 0 ]>
+//       : never
 
-type PermutationsOfTuple<T extends unknown[], Counter extends 0[] = []> =
-T extends []
-  ? []
-  : Counter['length'] extends T['length']
-    ? never
-    : T extends [infer First, ...infer Rest]
-      ? RestUnion<Rest> extends infer I extends unknown[]
-        ? [First, ...I] | PermutationsOfTuple<[...Rest, First], [ ...Counter, 0]>
-        : never
-      : never
+// type PermutationsOfTuple<T extends unknown[], Counter extends 0[] = []> =
+// T extends []
+//   ? []
+//   : Counter['length'] extends T['length']
+//     ? never
+//     : T extends [infer First, ...infer Rest]
+//       ? RestUnion<Rest> extends infer I extends unknown[]
+//         ? [First, ...I] | PermutationsOfTuple<[...Rest, First], [ ...Counter, 0]>
+//         : never
+//       : never
+
+// #29657
+type PermutationsOfTuple<T extends unknown[], Prev extends unknown[] = []> = T extends [infer First, ...infer Rest]
+  ? [First, ...PermutationsOfTuple<[...Prev, ...Rest]>]
+    | (Rest extends [] ? never : PermutationsOfTuple<Rest, [...Prev, First]>)
+  : []
 
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect, ExpectFalse } from '@type-challenges/utils'
