@@ -1,10 +1,7 @@
 {
   "name": "@lvjiaxuan/type-challenges",
-  "version": "0.0.1",
-  "private": false,
   "author": "lvjiaxuan <471501748@qq.com> (https://github.com/lvjiaxuan)",
   "license": "MIT",
-  "main": "index.js",
   "scripts": {
     "tsc": "tsc --noEmit",
     "prepare": "husky install",
@@ -13,10 +10,9 @@
   "devDependencies": {
     "@octokit/rest": "^20.0.2",
     "@type-challenges/utils": "^0.1.1",
-    "@types/node": "^20.10.3",
-    "dotenv": "^16.3.1",
-    "eslint": "^8.55.0",
-    "husky": "^8.0.3",
+    "@types/node": "^20.11.10",
+    "dotenv": "^16.4.1",
+    "husky": "^9.0.7",
     "lint-staged": "^15.2.0",
     "typescript": "^5.3.3"
   }
