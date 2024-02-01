@@ -26,17 +26,11 @@
 
 type IsUnion<T, U = T> = [T] extends [never] ? false : T extends T ? [U] extends [T] ? false : true : false
 
-type IsEmbedded<T> = Equal<T, string> extends true
-  ? true
-  : Equal<T, `${bigint}`> extends true
+type IsStringNumberBigint<T> = T extends `${infer A}${string}`
+  ? '0' | '1' extends A
     ? true
-    : Equal<T, `${number}`> extends true
-      ? true
-      : Equal<T, `${boolean}`> extends true
-        ? true
-        : Equal<T, `${string & {}}`> extends true // Additional, `${number & {}}` etc.
-          ? true
-          : false
+    : false
+  : true
 
 type IsFixedStringLiteralType<S extends string> =
   [S] extends [never]
@@ -44,12 +38,30 @@ type IsFixedStringLiteralType<S extends string> =
     : IsUnion<S> extends true
       ? false // 2. union
       : S extends `${infer F}${ infer Rest extends string}`
-        ? IsEmbedded<F> extends true // 3. embedded types
+        ? IsStringNumberBigint<F> extends true // 3. embedded types
           ? false
           : Rest extends ''
             ? true
             : IsFixedStringLiteralType<Rest>
         : false
+
+// https://github.com/type-challenges/type-challenges/issues/31666
+// type SingleCheck<S> = S extends ''
+//   ? true
+//   : S extends `${infer C}${infer T}`
+//     ? '0' | '1' extends C
+//       ? false // means that the `${number/bigint}` is detected, and returns false.
+//       : SingleCheck<T> // ignores C whatever its type.
+//     : false; // means S is `${string/boolean}`.
+
+
+// type IsFixedStringLiteralType<S extends string, T = S> = [S] extends [never]
+//   ? false // never type
+//   : S extends unknown
+//     ? [T] extends [S]
+//       ? SingleCheck<S>
+//       : false // union type, including `${boolean}`.
+//     : never;
 
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from '@type-challenges/utils'
