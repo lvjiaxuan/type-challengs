@@ -12,8 +12,8 @@ devDependencies:
     specifier: ^0.1.1
     version: 0.1.1
   '@types/node':
-    specifier: ^20.11.28
-    version: 20.11.28
+    specifier: ^20.11.30
+    version: 20.11.30
   dotenv:
     specifier: ^16.4.5
     version: 16.4.5
@@ -24,8 +24,8 @@ devDependencies:
     specifier: ^15.2.2
     version: 15.2.2
   typescript:
-    specifier: ^5.4.2
-    version: 5.4.2
+    specifier: ^5.4.3
+    version: 5.4.3
 
 packages:
 
@@ -148,8 +148,8 @@ packages:
     resolution: {integrity: sha512-A7ljYfBM+FLw+NDyuYvGBJiCEV9c0lPWEAdzfOAkb3JFqfLl0Iv/WhWMMARHiRKlmmiD1g8gz/507yVvHdQUYA==}
     dev: true
 
-  /@types/node@20.11.28:
-    resolution: {integrity: sha512-M/GPWVS2wLkSkNHVeLkrF2fD5Lx5UC4PxA0uZcKc6QqbIQUJyW1jVjueJYi1z8n0I5PxYrtpnPnWglE+y9A0KA==}
+  /@types/node@20.11.30:
+    resolution: {integrity: sha512-dHM6ZxwlmuZaRmUPfv1p+KrdD1Dci04FbdEm/9wEMouFqxYoFl5aMkt0VMAUtYRQDyYvD41WJLukhq/ha3YuTw==}
     dependencies:
       undici-types: 5.26.5
     dev: true
@@ -531,8 +531,8 @@ packages:
     engines: {node: '>=14.16'}
     dev: true
 
-  /typescript@5.4.2:
-    resolution: {integrity: sha512-+2/g0Fds1ERlP6JsakQQDXjZdZMM+rqpamFZJEKh4kwTIn3iDkgKtby0CeNd5ATNZ4Ry1ax15TMx0W2V+miizQ==}
+  /typescript@5.4.3:
+    resolution: {integrity: sha512-KrPd3PKaCLr78MalgiwJnA25Nm8HAmdwN3mYUYZgG/wizIo9EainNVQI9/yDavtVFRN2h3k8uf3GLHuhDMgEHg==}
     engines: {node: '>=14.17'}
     hasBin: true
     dev: true
