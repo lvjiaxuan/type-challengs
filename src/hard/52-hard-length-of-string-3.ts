@@ -83,6 +83,7 @@ type Gened<N extends string> = N extends `${''
   }` : never
 
 type cases = [
+  // @ts-expect-error ignore
   Expect<Equal<LengthOfString<Gened<'0000000'>>, 0>>,
   Expect<Equal<LengthOfString<Gened<'0000001'>>, 1>>,
   Expect<Equal<LengthOfString<Gened<'0000002'>>, 2>>,
