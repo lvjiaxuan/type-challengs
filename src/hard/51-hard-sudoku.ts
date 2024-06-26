@@ -17,40 +17,36 @@
 // 每一宫(粗黑线围起来的区域，通常是3x3 的九宫格)的数字均须包含1～9，不能缺少，也不能重复。
 // 完成需同时满足这三个条件。
 
-type BaseType = [
-  [ Digits[],Digits[],Digits[] ],
-  [ Digits[],Digits[],Digits[] ],
-  [ Digits[],Digits[],Digits[] ],
-  [ Digits[],Digits[],Digits[] ],
-  [ Digits[],Digits[],Digits[] ],
-  [ Digits[],Digits[],Digits[] ],
-  [ Digits[],Digits[],Digits[] ],
-  [ Digits[],Digits[],Digits[] ],
-  [ Digits[],Digits[],Digits[] ],
-]
-
 type VerRows<T> = T extends [ infer F, ...infer R ]
   ? F extends [ [ infer A, infer B, infer C ], [ infer D, infer E, infer F ], [ infer G, infer H, infer I ] ]
-    ? [A, B, C, D, E, F, G, H, I][number] extends Digits
+    ? Digits extends [A, B, C, D, E, F, G, H, I][number]
       ? VerRows<R>
       : false
     : never
   : true
 
-type VerCols<T, _R extends unknown[] = []> = T extends [ infer F, ...infer R ]
-  ? F extends [ [ infer A extends _R[0], infer B extends _R[1], infer C extends _R[2] ],
-                [ infer D extends _R[3], infer E extends _R[4], infer F extends _R[5] ],
-                [ infer G extends _R[6], infer H extends _R[7], infer I extends _R[8] ]
+type UndefHelper<T> = T extends undefined ? unknown : T
+type VerCols<T, _R extends unknown[] = [], > = T extends [ infer F, ...infer R ]
+  ? F extends [ [ infer A extends UndefHelper<_R[0]>, infer B extends UndefHelper<_R[1]>, infer C extends UndefHelper<_R[2]> ],
+                [ infer D extends UndefHelper<_R[3]>, infer E extends UndefHelper<_R[4]>, infer F extends UndefHelper<_R[5]> ],
+                [ infer G extends UndefHelper<_R[6]>, infer H extends UndefHelper<_R[7]>, infer I extends UndefHelper<_R[8]> ]
               ]
     ? VerCols<R, [ _R[0] | A, _R[1] | B, _R[2] | C, _R[3] | D, _R[4] | E, _R[5] | F, _R[6] | G, _R[7] | H, _R[8] | I ]>
-    : false
+    : _R
   : true
 
-// type VerGrids<T> = T extends
-
+type VerGrids<T> = T extends [
+  [ infer A extends Digits[], ...infer RA ],
+  [ infer B extends Digits[], ...infer RB ],
+  [ infer C extends Digits[], ...infer RC ],
+  ...infer R
+] ? Digits extends A[number] | B[number] | C[number] 
+  ? VerGrids<[ [RA], [RB], [RC], ...R ]>
+  : false
+: true
 
 type Digits = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
-type SudokuSolved = any
+type SudokuSolved<T> = VerRows<T> extends false ? false : VerCols<T> extends false ? false : VerGrids<T> extends false ? false : true
 
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from '@type-challenges/utils'
