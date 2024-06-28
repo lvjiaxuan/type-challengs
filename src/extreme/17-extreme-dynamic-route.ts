@@ -24,7 +24,7 @@
 type IsArr<T> = T extends `${string}...${string}` ? true : false
 type Extract<T> = T extends `[...${infer F}]` | `...${infer F}` ? F : T
 
-type DynamicRoute<T extends string, _Res extends Record<string, string | string[]> = {}> = T extends `${infer A}[...]${infer B}`
+type DynamicRoute<T extends string, _Res extends Record<string, string | string[]> = {}> = T extends `${infer A}/[...]${infer B}`
   ? DynamicRoute<`${A}${B}`, _Res & { '...': string }>
   : T extends `${string}]/[...${string}`
     ? never
@@ -39,6 +39,7 @@ type DynamicRoute<T extends string, _Res extends Record<string, string | string[
 import type { Equal, Expect } from '@type-challenges/utils'
 
 type cases = [
+  Expect<Equal<DynamicRoute<'/[[...foo]]/[...]/[...bar]'>, never>>,
   Expect<Equal<DynamicRoute<'/shop'>, {}>>,
   Expect<Equal<DynamicRoute<'/shop/[]'>, {}>>,
   Expect<Equal<DynamicRoute<'/shop/[slug]'>, { slug: string }>>,
