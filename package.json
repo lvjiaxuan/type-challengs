@@ -8,11 +8,11 @@
     "n": "nlx jiti ./scripts/new.ts"
   },
   "devDependencies": {
-    "@octokit/rest": "^21.0.0",
+    "@octokit/rest": "^21.0.1",
     "@type-challenges/utils": "^0.1.1",
-    "@types/node": "^20.14.10",
+    "@types/node": "^20.14.11",
     "dotenv": "^16.4.5",
-    "husky": "^9.0.11",
+    "husky": "^9.1.1",
     "jiti": "^1.21.6",
     "lint-staged": "^15.2.7",
     "typescript": "^5.5.3"
