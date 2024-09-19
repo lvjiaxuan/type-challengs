@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "tsc": "tsc --noEmit",
-    "prepare": "husky install",
+    "prepare": "husky",
     "n": "nlx jiti ./scripts/new.ts"
   },
   "devDependencies": {
