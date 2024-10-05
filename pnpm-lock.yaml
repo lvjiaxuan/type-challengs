@@ -24,8 +24,8 @@ importers:
         specifier: ^9.1.6
         version: 9.1.6
       jiti:
-        specifier: ^2.0.0
-        version: 2.0.0
+        specifier: ^2.2.1
+        version: 2.2.1
       lint-staged:
         specifier: ^15.2.10
         version: 15.2.10
@@ -202,8 +202,8 @@ packages:
   isexe@2.0.0:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
 
-  jiti@2.0.0:
-    resolution: {integrity: sha512-CJ7e7Abb779OTRv3lomfp7Mns/Sy1+U4pcAx5VbjxCZD5ZM/VJaXPpPjNKjtSvWQy/H86E49REXR34dl1JEz9w==}
+  jiti@2.2.1:
+    resolution: {integrity: sha512-weIl/Bv3G0J3UKamLxEA2G+FfQ33Z1ZkQJGPjKFV21zQdKWu2Pi6o4elpj2uEl5XdFJZ9xzn1fsanWTFSt45zw==}
     hasBin: true
 
   lilconfig@3.1.2:
@@ -494,7 +494,7 @@ snapshots:
 
   isexe@2.0.0: {}
 
-  jiti@2.0.0: {}
+  jiti@2.2.1: {}
 
   lilconfig@3.1.2: {}
 
