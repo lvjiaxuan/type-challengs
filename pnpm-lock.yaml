@@ -18,8 +18,8 @@ importers:
         specifier: ^22.10.1
         version: 22.10.1
       dotenv:
-        specifier: ^16.4.5
-        version: 16.4.5
+        specifier: ^16.4.7
+        version: 16.4.7
       husky:
         specifier: ^9.1.7
         version: 9.1.7
@@ -144,8 +144,8 @@ packages:
       supports-color:
         optional: true
 
-  dotenv@16.4.5:
-    resolution: {integrity: sha512-ZmdL2rui+eB2YwhsWzjInR8LldtZHGDoQ1ugH85ppHKwpUHL7j7rN0Ti9NCnGiQbhaZ11FpR+7ao1dNsmduNUg==}
+  dotenv@16.4.7:
+    resolution: {integrity: sha512-47qPchRCykZC03FhkYAhrvwU4xDBFIj1QPqaarj6mdM/hgUzfPHcpkHJOn3mJAufFeeAxAzeGsr5X0M4k6fLZQ==}
     engines: {node: '>=12'}
 
   emoji-regex@10.3.0:
@@ -450,7 +450,7 @@ snapshots:
     dependencies:
       ms: 2.1.2
 
-  dotenv@16.4.5: {}
+  dotenv@16.4.7: {}
 
   emoji-regex@10.3.0: {}
 
